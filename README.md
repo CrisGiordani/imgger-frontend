@@ -1,12 +1,12 @@
-Este projeto é parte de um teste prático para um processo seletivo referente à vaga de Analista de Desenvolvimento Industrial IV - Programador Back-end PHP.<br>
+Este projeto é parte de um teste prático para um processo seletivo referente à vaga de Analista de Desenvolvimento - Programador Back-end PHP.<br>
 <br>
-Este repositório consiste no Frontend da aplicação Imgger, para gerenciamento de um banco de imagens.
+Este repositório consiste no Front-end da aplicação Imgger, para gerenciamento de um banco de imagens.
 <br>
 ReactJS<br >
 
 *********
 
-<img src="imgger.svg">
+<img src="https://www.cuby.com.br/cli/imgger/imgger.png">
 
 ## Available Scripts
 
