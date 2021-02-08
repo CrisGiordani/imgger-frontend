@@ -12,7 +12,7 @@ Aplicação web para gerenciamento de imagens (banco de imagens), contendo dois 
 <ul>
 <li>Axios para conexão com o back-end/api</li>
 <li>Redux para persistência de dados de autenticação</li>
-<ul>
+</ul>
 <br>
 *********
 
@@ -22,11 +22,12 @@ API - Backend
 https://github.com/CrisGiordani/imgger-backend
 
 
-1. git clone https://github.com/CrisGiordani/imgger-frontend
-2. yarn 
-3. yarn dev 
-4. http://localhost:3000 
+1. $ git clone https://github.com/CrisGiordani/imgger-frontend
+2. $ yarn 
+3. $ yarn dev 
 
+<img src="https://www.cuby.com.br/cli/imgger/screen1.png">
+<img src="https://www.cuby.com.br/cli/imgger/screen2.png">
 
 *********
 
