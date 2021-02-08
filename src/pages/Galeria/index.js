@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-
-//import { toast } from "react-toastify";
 import Header from "../../components/Header";
 
 import api from "../../services/api";
@@ -12,19 +10,23 @@ export default function Galeria(req, res) {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    api.get("images").then((response) => {
-        setImages(response.data);
-    })
-  }, []);
+    
+    async function loadImages() {
+      const response = await api.get('images');
+      setImages(response.data);
+    }
+    loadImages();
 
+  }, []);
+  
   return (
     <>
       <Header />
       <div className="page-container">
-
         <div className="images-container">
+          
           <h1>Minha Galeria</h1>
-          <ul class="cards">
+          <ul className="cards">
             {images.map((image) => (
               <li key={image.id}>
                 <p><b>{image.title}</b></p>

@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/imgger_admin.svg";
 import { FiPower } from "react-icons/fi";
 
 import { Container, Content, Profile } from "./styles";
 import { signOut } from "../../store/modules/auth/actions";
 
-export default function Header() {
+export default function HeaderAdm() {
   
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
@@ -26,8 +26,8 @@ export default function Header() {
         <aside>
           <Profile>
             <div>
-            <Link to="/galeria">Galeria</Link>
-              <Link to="/profile">Perfil</Link>
+              <Link to="/galeria">Galeria</Link>
+              <Link to="/profile">Usuários</Link>
               <Link to="/upload">Upload</Link>
             </div>
             <button type="button" onClick={handleLogout}>

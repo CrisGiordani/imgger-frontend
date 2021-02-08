@@ -8,15 +8,15 @@ export default function RouterWrapper({
   isPrivate = false,
   ...rest
 }) {
-  const signed = useSelector((state) => state.auth.signed);
+  const signed = useSelector((state) => state.auth.signed);  
 
   if (!signed && isPrivate) {
     return <Redirect to="/" />;
   }
 
-  // if (signed && !isPrivate) {
-  //   return <Redirect to="/galeria" />;
-  // }
+  if (signed && !isPrivate) {
+    //  return <Redirect to="/galeria" />;
+  }
 
   return <Route {...rest} component={Component} />;
 }

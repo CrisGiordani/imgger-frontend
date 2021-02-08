@@ -19,7 +19,7 @@ export default function App() {
     <Provider store={store}>
       <Router history={history}>
         <Routes />
-        <ToastContainer autoClose={6000} position="top-center" />
+        <ToastContainer autoClose={5000} position="top-center" />
       </Router>
     </Provider>
   );

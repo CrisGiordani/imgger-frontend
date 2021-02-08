@@ -33,11 +33,9 @@ export default function RegisterUser() {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.auth.loading);
 
-  function handleSubmit({ name, email, mobile, password }) {
-    const performer = 0;
-    const description = "";
+  function handleSubmit({ name, email, password }) {
     dispatch(
-      signUpRequest(name, description, performer, email, mobile, password)
+      signUpRequest(name, email, password)
     );
   }
 

@@ -1,5 +1,5 @@
 {
-  "name": "tipy-frontend",
+  "name": "imgger-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,6 +14,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-dropzone": "^11.3.1",
     "react-grid-gallery": "^0.5.5",
     "react-icons": "^3.9.0",
     "react-input-mask": "^2.0.4",

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background: #e1e1e1;
+  background: #4A90E2;
   padding: 0 30px;
 `;
 
@@ -53,7 +53,7 @@ export const Profile = styled.div`
       display: block;
       margin-top: 2px;
       font-size: 12px;
-      color: #999;
+      color: #000;
     }
   }
   img {

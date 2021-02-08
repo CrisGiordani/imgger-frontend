@@ -30,13 +30,10 @@ export function* signIn({ payload }) {
 
 export function* signUp({ payload }) {
   try {
-    const { name, description, performer, email, mobile, password } = payload;
+    const { name, email, password } = payload;
     yield call(api.post, "users", {
       name,
-      description,
-      performer,
       email,
-      mobile,
       password,
     });
     yield put(signInRequest(email, password));
@@ -51,7 +48,7 @@ export function* signUp({ payload }) {
 }
 export function setToken({ payload }) {
   if (!payload) {
-    return;
+    history.push("/");
   }
 
   const { token } = payload.auth;
