@@ -7,24 +7,20 @@ import { updateUserSuccess, updateUserFailure } from "./actions";
 
 export function* updateUser({ payload }) {
   try {
-    const { name, email, ...rest } = payload.data.user;
-
-    const user = Object.assign({ name, email }, rest.oldPassword ? rest : {});
-
+    const { name, email, ...rest } = payload.data;
+    const user = Object.assign({ name, email }, rest.password ? rest : {});
     const response = yield call(api.put, "users", user);
-
     toast("Perfil atualizado com sucesso!", {
-      className: ".tipy-toast tipy-toast-success",
-      bodyClassName: "tipy-toast-success-body",
-      progressClassName: "tipy-toast-success-bar",
+      className: ".imgger-toast imgger-toast-success",
+      bodyClassName: "imgger-toast-success-body",
+      progressClassName: "imgger-toast-success-bar",
     });
-
     yield put(updateUserSuccess(response.data));
   } catch (error) {
     toast(error.response.data.error, {
-      className: ".tipy-toast tipy-toast-alert",
-      bodyClassName: "tipy-toast-alert-body",
-      progressClassName: "tipy-toast-alert-bar",
+      className: ".imgger-toast imgger-toast-alert",
+      bodyClassName: "imgger-toast-alert-body",
+      progressClassName: "imgger-toast-alert-bar",
     });
     yield put(updateUserFailure());
   }

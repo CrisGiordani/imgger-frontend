@@ -2,9 +2,8 @@ import { takeLatest, call, put, all } from "redux-saga/effects";
 import { toast } from "react-toastify";
 
 import api from "../../../services/api";
-import history from "../../../services/history";
 
-import { signInSuccess, signInRequest, signFailure } from "./actions";
+import { signInSuccess, signFailure } from "./actions";
 
 export function* signIn({ payload }) {
   try {
@@ -15,14 +14,14 @@ export function* signIn({ payload }) {
     });
 
     const { token, user } = response.data;
-
+    api.defaults.headers.Authorization = `Bearer ${token}`;
     yield put(signInSuccess(token, user));
-    history.push("/galeria");
+
   } catch (error) {
     toast(error.response.data.error, {
-      className: ".tipy-toast tipy-toast-alert",
-      bodyClassName: "tipy-toast-alert-body",
-      progressClassName: "tipy-toast-alert-bar",
+      className: ".imgger-toast imgger-toast-alert",
+      bodyClassName: "imgger-toast-alert-body",
+      progressClassName: "imgger-toast-alert-bar",
     });
     yield put(signFailure());
   }
@@ -36,19 +35,18 @@ export function* signUp({ payload }) {
       email,
       password,
     });
-    yield put(signInRequest(email, password));
   } catch (error) {
     toast.error(error.response.data.error, {
-      className: ".tipy-toast tipy-toast-alert",
-      bodyClassName: "tipy-toast-alert-body",
-      progressClassName: "tipy-toast-alert-bar",
+      className: ".imgger-toast imgger-toast-alert",
+      bodyClassName: "imgger-toast-alert-body",
+      progressClassName: "imgger-toast-alert-bar",
     });
     yield put(signFailure());
   }
 }
 export function setToken({ payload }) {
   if (!payload) {
-    history.push("/");
+    return;
   }
 
   const { token } = payload.auth;
