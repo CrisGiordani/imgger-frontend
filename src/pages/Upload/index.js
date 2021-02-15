@@ -1,27 +1,32 @@
-import React, { useState, useEffect } from "react";
-//import { toast } from "react-toastify";
+import React, { useState } from "react";
+import history from "../../services/history";
+
 import Header from "../../components/Header";
+import * as Yup from "yup";
+import { toast } from "react-toastify";
 import { Form, Input } from "@rocketseat/unform";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Dropzone from '../../components/Dropzone';
 import api from "../../services/api";
 import "./styles.css";
 
+
+const schema = Yup.object().shape({
+  title: Yup.string().required("O título é obrigatório"),
+  description: Yup.string().required("A descrição é obrigatória"),
+  tags: Yup.string().required("Tags são importantes, não deixe em branco"),
+});
+
 export default function Upload() {
-  const dispatch = useDispatch();
   const loading = useSelector((state) => state.auth.loading);
 
-  const [formData, setFormData] = useState({
-    title: '', 
-    description: '', 
-    tags: '',
-  })
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [tags, setTags] = useState('');
   const [selectedFile, setSelectedFile] = useState();
 
-  async  function handleSubmit() {
-
-    const { title, description, tags } = formData;
+  async function handleSubmit() {
 
     const data = new FormData();
 
@@ -29,13 +34,24 @@ export default function Upload() {
     data.append('description', description); 
     data.append('tags', tags); 
 
-    
     if (selectedFile) {
-      data.append('image', selectedFile)
+      data.append('photo', selectedFile)
+    } else {
+      toast("Opa, parece que você esqueceu do princial: a imagem :)", {
+        className: ".imgger-toast imgger-toast-alert",
+        bodyClassName: "imgger-toast-alert-body",
+        progressClassName: "imgger-toast-alert-bar",
+      });
+      return;
     }
+
     await api.post('images', data);
-    
-    alert('Imagem enviada com sucesso!');
+    toast("Legal, imagem enviada com sucesso!", {
+      className: ".imgger-toast imgger-toast-success",
+      bodyClassName: "imgger-toast-success-body",
+      progressClassName: "imgger-toast-success-bar",
+    });
+    history.push('/galeria')
 
   }
   return (
@@ -48,10 +64,10 @@ export default function Upload() {
           <Dropzone onFileUploaded={setSelectedFile} />
          
         </section>
-        <Form onSubmit={handleSubmit}>
-          <Input placeholder="Título" name="title" />
-          <Input placeholder="Descrição" name="description" />
-          <Input placeholder="Tags" name="tags" type="tags" />
+        <Form schema={schema} onSubmit={handleSubmit}>
+          <Input placeholder="Título" name="title" onChange={e => setTitle(e.target.value)} />
+          <Input placeholder="Descrição" name="description" onChange={e => setDescription(e.target.value)} />
+          <Input placeholder="Tags" name="tags" type="tags" onChange={e => setTags(e.target.value)} />
           <button className="button" type="submit">
             {loading ? "Enviando..." : "Enviar"}
           </button>

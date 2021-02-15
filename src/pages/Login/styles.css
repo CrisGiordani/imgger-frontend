@@ -1,3 +1,10 @@
+
+body {
+  background-image: url(../../assets/background_3.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .login-container {
   width: 100%;
   max-width: 1120px;
@@ -9,8 +16,21 @@
   justify-content: center;
 }
 
+.login-container .content {
+  width: 100%;
+  max-width:450px;
+  border: solid 1px black;
+  padding: 40px;
+  background-color: rgba(255,255,255,0.85) !important;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .login-container section.form {
-  max-width: 350px;
+  max-width: 100%;
 }
 
 .login-container section.form img {
@@ -37,3 +57,4 @@
   font-size: 16px;
   margin: 32px 0 20px 0;
 }
+

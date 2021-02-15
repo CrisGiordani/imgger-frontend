@@ -30,25 +30,27 @@ export default function Login(req, res) {
 
   return (
     <div className="login-container">
-      <section className="form">
-        <img src={logoImg} alt="imgger" />
-        <Form
-          initialData={{ email: userEmail }}
-          schema={schema}
-          onSubmit={handleSubmit}
-        >
-          <h3>Sistema de gerenciamento de imagens</h3>
-          <Input placeholder="Seu e-mail" name="email" type="email" />
-          <Input placeholder="Sua senha" name="password" type="password" />
-          <button type="submit" className="button">
-            {loading ? "Carregando..." : "Acessar"}
-          </button>
-          <Link className="back-link" to="/register/user">
-            <FiLogIn size={16} color="#4A90E2" />
-            Cadastro rápido
-          </Link>
-        </Form>
-      </section>
+      <div className="content">
+        <section className="form">
+          <img src={logoImg} alt="imgger" style={{maxWidth: '80%'}} />
+          <Form
+            initialData={{ email: userEmail }}
+            schema={schema}
+            onSubmit={handleSubmit}
+          >
+            <h3>Sistema de gerenciamento de imagens</h3>
+            <Input placeholder="Seu e-mail" name="email" type="email" />
+            <Input placeholder="Sua senha" name="password" type="password" />
+            <button type="submit" className="button">
+              {loading ? "Carregando..." : "Acessar"}
+            </button>
+            <Link className="back-link" to="/register/user">
+              <FiLogIn size={16} color="#4A90E2" />
+              Cadastro rápido
+            </Link>
+          </Form>
+        </section>
+      </div>
     </div>
   );
 }

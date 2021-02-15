@@ -40,33 +40,35 @@ export default function RegisterUser() {
   }
 
   return (
-    <div className="register-container">
-      <div className="content">
-        <section>
-          <img src={logoImg} alt="Tippy" />
-          <h1>Cadastro</h1>
-          <p>
-            Faça seu cadastro no imgger para pesquisar, armazenar e baixar imagens.
-          </p>
-          <Link className="back-link" to="/">
-            <FiArrowLeft size={16} color="#4A90E2" />
-            Já tenho cadastro
-          </Link>
-        </section>
-        <Form schema={schema} onSubmit={handleSubmit}>
-          <Input placeholder="Seu nome" name="name" />
-          <Input placeholder="E-mail" name="email" type="email" />
-          <Input placeholder="Senha" name="password" type="password" />
-          <Input
-            placeholder="Confirmação de senha"
-            name="confirmPassword"
-            type="password"
-          />
-          <button className="button" type="submit">
-            {loading ? "Carregando..." : "Cadastrar"}
-          </button>
-        </Form>
+      <div className="register-container">
+        <div className="content">
+          <div className="form_esquerda">
+            <img src={logoImg} alt="imgger" />
+            <h1>Cadastro</h1>
+            <p>
+              Faça seu cadastro no imgger para pesquisar, armazenar e baixar imagens.
+            </p>
+            <Link className="back-link" to="/">
+              <FiArrowLeft size={16} color="#4A90E2" />
+              Já tenho cadastro
+            </Link>
+          </div>
+          <div className="form_direita">
+            <Form schema={schema} onSubmit={handleSubmit}>
+            <Input placeholder="Seu nome" name="name" />
+            <Input placeholder="E-mail" name="email" type="email" />
+            <Input placeholder="Senha" name="password" type="password" />
+            <Input
+              placeholder="Confirmação de senha"
+              name="confirmPassword"
+              type="password"
+            />
+            <button className="button" type="submit">
+              {loading ? "Carregando..." : "Cadastrar"}
+            </button>
+          </Form>
+          </div>
+        </div>
       </div>
-    </div>
   );
 }
