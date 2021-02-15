@@ -26,12 +26,13 @@ export default function Header() {
         <aside>
           <Profile>
             <div>
-            <Link to="/galeria">Galeria</Link>
+              <Link to="/galeria">Galeria</Link>
               <Link to="/profile">Perfil</Link>
               <Link to="/upload">Upload</Link>
             </div>
             <button type="button" onClick={handleLogout}>
               <FiPower size={15} color="#4A90E2" />
+              {user.name}
             </button>
           </Profile>
         </aside>

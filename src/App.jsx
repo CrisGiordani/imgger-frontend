@@ -2,6 +2,7 @@ import React from "react";
 import { ToastContainer } from "react-toastify";
 import { Router } from "react-router-dom";
 import { Provider } from "react-redux";
+import SimpleReactLightbox from 'simple-react-lightbox';
 
 import "./config/ReactotronConfig";
 
@@ -18,8 +19,10 @@ export default function App() {
   return (
     <Provider store={store}>
       <Router history={history}>
-        <Routes />
-        <ToastContainer autoClose={5000} position="top-center" />
+        <SimpleReactLightbox>
+          <Routes />
+          <ToastContainer autoClose={5000} position="top-center" />
+          </SimpleReactLightbox>
       </Router>
     </Provider>
   );

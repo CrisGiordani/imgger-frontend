@@ -15,23 +15,23 @@ import Upload from "../pages/Upload";
 
 // Administração
 
-import Allusers from "../pages/Allusers";
-import AllImages from "../pages/AllImages";
+import Users from "../pages/admin/Users";
+import Images from "../pages/admin/Images";
 
 export default function Routes() {
   return (
     <Switch>
       
       <Route path="/" exact component={Login} />
-      <Route path="/register/user" exact component={RegisterUser} />
+      <Route path="/register/user" component={RegisterUser} />
 
       <Route path="/galeria" component={Galeria} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
       
-      <Route path="/upload" component={Upload} />
+      <Route path="/upload" component={Upload} isPrivate />
 
-      <Route path="/admin/allusers" exact component={Allusers}  />
-      <Route path="/admin/allimages" component={AllImages}  />
+      <Route path="/admin/users" component={Users} isPrivate />
+      <Route path="/admin/images" component={Images} isPrivate isAdmin />
 
     </Switch>
   );
