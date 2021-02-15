@@ -21,8 +21,8 @@ export default function App() {
       <Router history={history}>
         <SimpleReactLightbox>
           <Routes />
-          <ToastContainer autoClose={5000} position="top-center" />
-          </SimpleReactLightbox>
+          <ToastContainer autoClose={4000} position="top-center" />
+        </SimpleReactLightbox>
       </Router>
     </Provider>
   );

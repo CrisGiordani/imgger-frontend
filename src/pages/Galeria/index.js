@@ -2,16 +2,21 @@ import React, { useState, useEffect } from "react";
 import Header from "../../components/Header";
 import { SRLWrapper } from "simple-react-lightbox";
 import api from "../../services/api";
-
 import "./styles.css";
 
+import { useDispatch } from "react-redux";
+import { signOut } from "../../store/modules/auth/actions";
+
 export default function Galeria(req, res) {
-  
+  const dispatch = useDispatch();
   const [images, setImages] = useState([]);
 
   useEffect(() => {
     api.get('images').then(response=> {
       setImages(response.data);
+    }).catch(error => {
+      console.log(error);
+      dispatch(signOut());
     })
   }, []);
   

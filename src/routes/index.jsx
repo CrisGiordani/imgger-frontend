@@ -18,7 +18,9 @@ import Upload from "../pages/Upload";
 import Users from "../pages/admin/Users";
 import Images from "../pages/admin/Images";
 
+
 export default function Routes() {
+  
   return (
     <Switch>
       
@@ -32,6 +34,7 @@ export default function Routes() {
 
       <Route path="/admin/users" component={Users} isPrivate />
       <Route path="/admin/images" component={Images} isPrivate isAdmin />
+
 
     </Switch>
   );
