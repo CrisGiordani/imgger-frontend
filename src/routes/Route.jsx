@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Route, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 export default function RouterWrapper({
   component: Component,
@@ -9,20 +8,38 @@ export default function RouterWrapper({
   isAdmin = false,
   ...rest
 }) {
-  
-  const signed = useSelector((state) => state.auth.signed);  
-  const admin = useSelector((state) => state.user.admin); 
+    
+  // const [userId] = useState(localStorage.getItem('apiUserId'));
+  // const [token, setToken] = useState(false);
+  // const [userAdmin, setUserAdmin] = useState(false);
 
-  if (!signed && isPrivate) {
-    return <Redirect to="/" />;
-  }
-  if (signed && !isPrivate) {
-    return <Redirect to="/galeria" />;
-  }
-  if (signed && !admin && isAdmin) {
-    return <Redirect to="/galeria" />;
-  }
+  // useEffect(()=> {
+  //   if (localStorage.getItem('apiUserAdmin') === "0") { setUserAdmin(false); };
+  //   if (localStorage.getItem('apiUserAdmin') === "1") { setUserAdmin(true); };
+  // }, [])
 
+  // useEffect(()=> {
+  //   if (localStorage.getItem('apiToken')!== null) { 
+  //     setToken(true); 
+  //   } else {
+  //     setToken(false); 
+  //   };
+  // }, [])
+
+  // // usuário não logado em rota privada
+  // if (!token && isPrivate) {
+  //   return <Redirect to="/" />;
+  // }
+
+  // // usuário logado e rota pública
+  // if (token && !isPrivate) {
+  //   return <Redirect to="/home" />;
+  // }
+
+  // // usuário comum, logado em rota administrativa
+  // if (!userAdmin && isAdmin) {
+  //   return <Redirect to={`/galeria/${userId}`} />;
+  // }
 
   return <Route {...rest} component={Component} />;
 }

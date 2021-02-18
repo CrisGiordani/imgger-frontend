@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 import api from "../../../services/api";
 
-import { updateUserSuccess, updateUserFailure } from "./actions";
+import { updateUserSuccess } from "./actions";
 
 export function* updateUser({ payload }) {
   try {
@@ -22,7 +22,6 @@ export function* updateUser({ payload }) {
       bodyClassName: "imgger-toast-alert-body",
       progressClassName: "imgger-toast-alert-bar",
     });
-    yield put(updateUserFailure());
   }
 }
 

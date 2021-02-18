@@ -1,13 +1,9 @@
-
-body {
+.login-container {
   background-image: url(../../assets/background_3.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-.login-container {
   width: 100%;
-  max-width: 1120px;
   height: 100vh;
   margin: 0 auto;
 

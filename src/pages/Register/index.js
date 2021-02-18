@@ -6,11 +6,11 @@ import * as Yup from "yup";
 import { Form, Input } from "@rocketseat/unform";
 
 import { useDispatch, useSelector } from "react-redux";
-import { signUpRequest } from "../../../store/modules/auth/actions";
+import { signUpRequest } from "../../store/modules/auth/actions";
 
 import "./styles.css";
 
-import logoImg from "../../../assets/logo.svg";
+import logoImg from "../../assets/logo.svg";
 
 const schema = Yup.object().shape({
   name: Yup.string().required("O nome é obrigatório"),

@@ -26,11 +26,13 @@ const DropZone = ({ onFileUploaded }) => {
         selectedFileUrl 
           ? <img src={selectedFileUrl} alt="Thumbnail" />
           : (
-            isDragActive ?
-            <p>Solte a imagem aqui...</p> :
+            isDragActive 
+            ?
+            <p>Arraste uma imagem aqui...</p> 
+            :
             <p>
                 <FiUpload />
-                Arraste uma imagem até aqui<br />( ou clique para selecionar um arquivo )
+                Arraste uma imagem aqui...<br />ou clique e selecione o arquivo.
             </p>
           )
       }

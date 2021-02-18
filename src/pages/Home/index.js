@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { SRLWrapper } from "simple-react-lightbox";
 import { toast } from "react-toastify";
@@ -7,42 +7,42 @@ import { toast } from "react-toastify";
 import Header from "../../components/Header";
 import api from "../../services/api";
 import history from "../../services/history";
-
+import { FiSearch } from "react-icons/fi";
 import { signOut } from "../../store/modules/auth/actions";
 
 import "./styles.css";
 
-export default function Galeria(req, res) {
+export default function Home(req, res) {
 
   const dispatch = useDispatch();
   const [images, setImages] = useState([]);
+ 
+  const search = useLocation().search;
+  const [busca, setBusca] = useState(new URLSearchParams(search).get('search') || "");
+
   const [token] = useState(localStorage.getItem('apiToken'));
   const [userId] = useState(localStorage.getItem('apiUserId'));
 
-  const { id } = useParams();
-  const [titulo, setTitulo] = useState('')
-  
   const [userAdmin, setUserAdmin] = useState(false);
-  const [userOwn, setUserOwn] = useState(false);
-
   useEffect(()=> {
     if (localStorage.getItem('apiUserAdmin') === "1") { setUserAdmin(true); };
-    if (id === userId) { setUserOwn(true); }
+  }, [])
 
-    api.get(`images/${id}`, {
+  useEffect(() => {
+    api.get("images", { "search" : busca }, {
       headers: {
         Authorization: `Bearer ${token}`,
       }
     }).then(response => {
-        userOwn ? setTitulo("Minha Galeria") : setTitulo(`Galeria de ${response.data.user[0].name}`);
-        setImages(response.data.photos);
+        console.log(response.data.data);
+        setImages(response.data.data);
       }).catch(error => {
         console.log(error);
         dispatch(signOut());
     })
   }, []);
   
- const options = {
+  const options = {
     settings: {
       overlayColor: "rgb(31, 40, 91, 0.9)",
       autoplaySpeed: 1500,
@@ -92,15 +92,28 @@ export default function Galeria(req, res) {
     history.push(`/galeria/${id}`)
   }
 
+  function handleSubmitSearch() {
+    alert(busca);
+  }
   return (
     <>
       <Header />
       <div className="page-container">
-          <h1>{titulo}</h1>
-
+          <div id="divBar">
+            <h1 id="h1Bar">Galeria Pública</h1>
+            <form id="formBar" action=""> 
+              <input type="text"
+                  placeholder=" Buscar imagens..."
+                  name="search" 
+                  onChange={e => setBusca(e.target.value)}
+                  /> 
+              <button onClick={() => handleSubmitSearch}> 
+                  <FiSearch />
+              </button> 
+            </form>
+          </div>
           <div className="images-container">
-            
-          <SRLWrapper options = {options}>
+              <SRLWrapper options = {options}>
               {images
                 ? images.length > 0 
                   ? images.map(image => (
@@ -108,7 +121,7 @@ export default function Galeria(req, res) {
                         <a href={"http://localhost/imgger/public/storage/" + image.path}>
                           <img src={"http://localhost/imgger/public/storage/thumb_" + image.path} className="imgger" alt={image.title} />
                         </a>
-                        { (userAdmin || userOwn ) && <span className="excluir" onClick={() => handleDeleteImage(image.path,image.id)}>X</span> }
+                        {(userAdmin || (image.user_id === userId)) && <span className="excluir" onClick={() => handleDeleteImage(image.path,image.id)}>X</span> }
                         <div className="legenda"  onClick={() => handleGoToGaleria(image.user_id)}>
                           <span className="title">{image.title}</span>
                           <span className="autor">{image.name}</span>

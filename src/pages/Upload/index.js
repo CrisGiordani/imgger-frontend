@@ -26,6 +26,8 @@ export default function Upload() {
   const [tags, setTags] = useState('');
   const [selectedFile, setSelectedFile] = useState();
 
+  const [id] = useState(localStorage.getItem('apiUserId'));
+
   async function handleSubmit() {
 
     const data = new FormData();
@@ -51,19 +53,16 @@ export default function Upload() {
       bodyClassName: "imgger-toast-success-body",
       progressClassName: "imgger-toast-success-bar",
     });
-    history.push('/galeria')
+    history.push(`/galeria/${id}`)
 
   }
   return (
-    <>
+    <> 
     <Header />
-    <div className="register-container">
+    <div className="page-container upload-container">
+      <h1>Envio de Imagem</h1>
       <div className="content">
-        <section>
-          <h1>Envio de Imagem</h1>
-          <Dropzone onFileUploaded={setSelectedFile} />
-         
-        </section>
+        <Dropzone onFileUploaded={setSelectedFile} />
         <Form schema={schema} onSubmit={handleSubmit}>
           <Input placeholder="Título" name="title" onChange={e => setTitle(e.target.value)} />
           <Input placeholder="Descrição" name="description" onChange={e => setDescription(e.target.value)} />

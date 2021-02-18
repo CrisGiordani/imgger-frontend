@@ -1,8 +1,14 @@
-.page-container .content {
+.profile-container {
+  width: 100%;
+  max-width: 900px;
+  padding: 0;
+  margin: 32px auto;
+}
+
+.profile-container .content {
   margin-top: 40px;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  padding: 50px;
 }
 
 .campo {

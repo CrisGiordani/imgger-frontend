@@ -22,7 +22,7 @@ export default function Login(req, res) {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.auth.loading);
 
-  const userEmail = localStorage.getItem("userEmail") || "";
+  const userEmail = localStorage.getItem("apiUserEmail") || "";
 
   function handleSubmit({ email, password }) {
     dispatch(signInRequest(email, password));
