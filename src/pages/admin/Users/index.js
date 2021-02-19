@@ -90,7 +90,7 @@ export default function Users(req, res) {
                   <tr id={alluser.id} key={alluser.id}>
                     <td><Link to={`/admin/user/${alluser.id}`} style={{ 'textDecoration':'none', 'color': '#444'}}>{alluser.name}</Link></td>
                     <td>{alluser.email}</td>
-                    <td style={{ 'textAlign':'center'}}><Link to={`/galeria/${alluser.id}`}><img src={iconGalery} /></Link><strong style={{ 'fontSize': 11}}>3</strong></td>
+                    <td style={{ 'textAlign':'center'}}><Link to={`/galeria/${alluser.id}`}><img src={iconGalery} /></Link><strong style={{ 'fontSize': 11}}></strong></td>
                     <td style={{ 'textAlign':'center', 'cursor': 'pointer'}}><img src={iconUserDelete} onClick={() => handleDeleteUser(alluser.name,alluser.id)} /></td>
                   </tr>
                   ))

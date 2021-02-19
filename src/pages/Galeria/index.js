@@ -22,6 +22,8 @@ export default function Galeria(req, res) {
   const { id } = useParams();
   const [titulo, setTitulo] = useState('')
   
+  const [userName] = useState(localStorage.getItem('apiUserName'));
+
   const [userAdmin, setUserAdmin] = useState(false);
   const [userOwn, setUserOwn] = useState(false);
 
@@ -111,7 +113,7 @@ export default function Galeria(req, res) {
                         { (userAdmin || userOwn ) && <span className="excluir" onClick={() => handleDeleteImage(image.path,image.id)}>X</span> }
                         <div className="legenda"  onClick={() => handleGoToGaleria(image.user_id)}>
                           <span className="title">{image.title}</span>
-                          <span className="autor">{image.name}</span>
+                          <span className="autor">{userName}</span>
                         </div>
                       </span>
                     ))

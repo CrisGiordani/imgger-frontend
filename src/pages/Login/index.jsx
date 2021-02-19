@@ -4,7 +4,7 @@ import { FiLogIn } from "react-icons/fi";
 import * as Yup from "yup";
 import { Form, Input } from "@rocketseat/unform";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { signInRequest } from "../../store/modules/auth/actions";
 
 import "./styles.css";
@@ -20,8 +20,6 @@ const schema = Yup.object().shape({
 
 export default function Login(req, res) {
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.auth.loading);
-
   const userEmail = localStorage.getItem("apiUserEmail") || "";
 
   function handleSubmit({ email, password }) {
@@ -41,9 +39,7 @@ export default function Login(req, res) {
             <h3>Sistema de gerenciamento de imagens</h3>
             <Input placeholder="Seu e-mail" name="email" type="email" />
             <Input placeholder="Sua senha" name="password" type="password" />
-            <button type="submit" className="button">
-              {loading ? "Carregando..." : "Acessar"}
-            </button>
+            <button type="submit" className="button">Acessar</button>
             <Link className="back-link" to="/register/user">
               <FiLogIn size={16} color="#4A90E2" />
               Cadastro rápido

@@ -5,7 +5,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import * as Yup from "yup";
 import { Form, Input } from "@rocketseat/unform";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { signUpRequest } from "../../store/modules/auth/actions";
 
 import "./styles.css";
@@ -31,8 +31,6 @@ const schema = Yup.object().shape({
 
 export default function RegisterUser() {
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.auth.loading);
-
   function handleSubmit({ name, email, password }) {
     dispatch(
       signUpRequest(name, email, password)
@@ -63,9 +61,7 @@ export default function RegisterUser() {
               name="confirmPassword"
               type="password"
             />
-            <button className="button" type="submit">
-              {loading ? "Carregando..." : "Cadastrar"}
-            </button>
+            <button className="button" type="submit">Cadastrar</button>
           </Form>
           </div>
         </div>

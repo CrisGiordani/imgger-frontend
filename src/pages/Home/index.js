@@ -22,7 +22,7 @@ export default function Home(req, res) {
 
   const [token] = useState(localStorage.getItem('apiToken'));
   const [userId] = useState(localStorage.getItem('apiUserId'));
-
+  
   const [userAdmin, setUserAdmin] = useState(false);
   useEffect(()=> {
     if (localStorage.getItem('apiUserAdmin') === "1") { setUserAdmin(true); };
@@ -117,7 +117,7 @@ export default function Home(req, res) {
               {images
                 ? images.length > 0 
                   ? images.map(image => (
-                      <span key={image.id} id={image.id} className="imgger_span">
+                        <span key={image.id} id={image.id} className="imgger_span">
                         <a href={"http://localhost/imgger/public/storage/" + image.path}>
                           <img src={"http://localhost/imgger/public/storage/thumb_" + image.path} className="imgger" alt={image.title} />
                         </a>
