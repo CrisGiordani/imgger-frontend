@@ -1,4 +1,4 @@
-Este projeto é parte de um teste prático para um processo seletivo referente à vaga de Analista de Desenvolvimento - Programador Back-end PHP. Este repositório consiste no Front-end da aplicação Imgger, para gerenciamento de um banco de imagens.
+Este repositório consiste no Front-end da aplicação Imgger, para gerenciamento de um banco de imagens.
 <br>
 Desenvolvido em ReactJS<br >
 <br>
